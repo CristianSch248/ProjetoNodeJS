@@ -4,7 +4,7 @@
   "description": "Projeto em node MEDO",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon src/app.js"
   },
   "author": "Cristian Schmitzhaus",
   "license": "MIT",
