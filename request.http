@@ -1,0 +1,29 @@
+POST  http://localhost:9090/inserir
+content-type: application/json
+
+{
+    "nome": "fffffff",
+    "preco": 33333
+}
+
+###
+
+GET http://localhost:9090/get
+
+###
+
+GET http://localhost:9090/get/35bef652-daac-4a64-ac19-5ff4cf6d8c75
+
+###
+
+PUT http://localhost:9090/alterar/b659fe8a-3de2-432c-b61c-78c4e000d662
+content-type: application/json
+
+{
+    "nome": "ZZZZZZZZZZZZ",
+    "preco": 20000
+}
+
+###
+
+DELETE http://localhost:9090/delete/29be1d9f-7317-4566-b145-6abb901f58c9
