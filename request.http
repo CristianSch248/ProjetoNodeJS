@@ -10,4 +10,8 @@ PUT http://localhost:9090/put
 
 ###
 
+PATCH http://localhost:9090/patch
+
+###
+
 DELETE http://localhost:9090/delete

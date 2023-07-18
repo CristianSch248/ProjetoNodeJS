@@ -2,14 +2,12 @@ const express = require("express")
 const routes  = express.Router()
 
 //ROTAS
-
-rotaDeInicio = require('./routes/inicio')
-
+rotaUsuario = require('./routes/Usuario')
 
 
 
 
-routes.use(rotaDeInicio)
+routes.use(rotaUsuario)
 
 
 

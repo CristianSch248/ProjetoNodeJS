@@ -6,4 +6,4 @@ const app = express()
 
 app.use(routes)
 
-app.listen(9090, () => console.log("Servidor rodando em -> localhost:9090"))
+app.listen(9090, () => console.log(`Back-end de FAXWBOOK rodando em: http://localhost:${port}/`))
