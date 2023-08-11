@@ -1,12 +1,26 @@
-POST  http://localhost:9090/post
+POST  http://localhost:9090/novoUsuario
+content-type: application/json
+
+{
+    "nome": "Bartholomew",
+    "email": "Bartholomew@email.com",
+    "senha": "1234"
+}
 
 ###
 
-GET http://localhost:9090/get
+GET http://localhost:9090/listarUsuarios
 
 ###
 
-PUT http://localhost:9090/put
+PUT http://localhost:9090/editarUsuario/5   
+content-type: application/json
+
+{
+    "nome": "Bartholomew",
+    "email": "bartholomew@email.com",
+    "senha": "1234567"
+}        
 
 ###
 
@@ -15,3 +29,13 @@ PATCH http://localhost:9090/patch
 ###
 
 DELETE http://localhost:9090/delete
+
+###
+
+POST  http://localhost:9090/login
+content-type: application/json
+
+{
+    "email": "cristian.schmitzhaus@email.com",
+    "senha": "senhaAlterada"
+}
