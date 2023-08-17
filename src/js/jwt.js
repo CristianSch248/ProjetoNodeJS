@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken')
-const SECRET = '@secret#'
+require('dotenv').config()
+
+const SECRET = process.env.SECRET
 
 const tokenBlacklist = new Set();
 

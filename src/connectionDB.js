@@ -6,10 +6,10 @@
     const sequelize = new Sequelize(database[env]);
 
     sequelize.authenticate().then(() => {
-        console.log('Conexão bem-sucedida com o banco de dados.');
+        console.log('Conexão criada com sucesso!');
     })
     .catch((error) => {
-        console.error('Erro ao conectar ao banco de dados:', error);
+        console.error('Erro na conexão com a base de dados:', error);
     });
 
     module.exports = sequelize;

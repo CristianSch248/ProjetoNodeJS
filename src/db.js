@@ -1,9 +1,11 @@
+require('dotenv').config()
+
 module.exports = {
     development: {
-      username: 'postgres',
-      password: '1234',
-      database: 'faxwbookDB',
-      host: 'localhost',
+      username: process.env.USERNAME_DB,
+      password: process.env.PASSWORD_DB,
+      database: process.env.DATABASE_DB,
+      host: process.env.HOST_DB,
       dialect: 'postgres',
     },
 };
