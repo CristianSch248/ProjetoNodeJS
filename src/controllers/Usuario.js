@@ -1,6 +1,7 @@
 const sequelize = require("../connectionDB")
 const ModelUsuario = require("../models/Usuario")
 const { Op } = require('sequelize')
+const bcrypt = require('bcrypt')
 
 const JTW = require('../js/jwt')
 
@@ -12,6 +13,7 @@ async function novoUsuario(req, res){
     console.log("🚀 ~ file: Usuario.js:14 ~ novoUsuario ~ req:", req)
 
     let body = req.body
+    let senhaCriptografada = null
 
     if (!body.nome) {
         console.log('Usuário não informado')
@@ -26,6 +28,8 @@ async function novoUsuario(req, res){
     if (!body.senha) {
         console.log('Senha não definida')
         return
+    } else {
+        senhaCriptografada = await bcrypt.hash(body.senha, 10)
     }
 
     const t = await sequelize.transaction()
@@ -34,7 +38,7 @@ async function novoUsuario(req, res){
         let novoUsuario = await ModelUsuario.create({
             nome: body.nome,
             email: body.email,
-            senha: body.senha
+            senha: senhaCriptografada
         })
         await t.commit();
         return res.status(200).send('Usuário cadastrado com sucesso!')
@@ -79,7 +83,7 @@ async function alterarUsuario(req, res){
             Usuario.email = body.email
         }
         if(body.senha){
-            Usuario.senha = body.senha
+            Usuario.senha = await bcrypt.hash(body.senha, 10)
         }
     
         await Usuario.save({transaction: t})
@@ -121,7 +125,9 @@ async function login(req, res){
         }
     })
 
-    if(user.senha === body.senha){
+    const match = await bcrypt.compare(body.senha, user.senha);
+
+    if(match) {
         const token = JTW.newToken(user)
         return res.json({ auth: true, token })
     } else { 
